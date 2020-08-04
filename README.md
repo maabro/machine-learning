@@ -10,6 +10,10 @@ Si hay que actualizar pip:
 ```
 python -m pip install --upgrade pip
 ```
+Comprobar lista de paquetes del instalador:
+```
+pip3 list
+```
 ### Instalar el paquete Virtualenv
 ```
 pip3 install virtualenv
