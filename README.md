@@ -59,7 +59,14 @@ pip3 install scikit-learn
 ```
 pip3 install urllib3
 ```
-
+- [xlrd](https://xlrd.readthedocs.io/en/latest/) opt. para abrir ficheros xls y xlsx
+```
+pip3 install xlrd
+```
+- [xlwt](https://xlwt.readthedocs.io/en/latest/) opt. para escribir ficheros xls y xlsx
+```
+pip3 install xlwt
+```
 ## Introducción
 ### Proceso
 1. Buscar el objetivo, lo que queremos estimar o predecir.

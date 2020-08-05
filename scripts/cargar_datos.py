@@ -2,7 +2,6 @@ import pandas as pd # https://pandas.pydata.org/docs/
 import os # https://docs.python.org/3/library/os.html
 import csv # https://docs.python.org/3/library/csv.html
 import urllib3 # https://urllib3.readthedocs.io/en/latest/user-guide.html
-import json # https://docs.python.org/3/library/json.html
 
 main_path = 'D:/curso_python/datasets'
 file_name = 'titanic/titanic3.csv'
@@ -55,10 +54,18 @@ df4 = pd.read_csv(outfile, sep = '\t')
 medals_url = 'http://winterolympicsmedals.com/medals.csv'
 medals_data = pd.read_csv(medals_url)
 
+# https://stackoverflow.com/questions/50187537/how-to-print-a-csv-content-from-remote-url-using-python-3-x
 http = urllib3.PoolManager()
 r = http.request('GET', medals_url)
+data_map = "".join(map(chr, r.data)) # map convierte a char cada elemento del array
+data_split = data_map.split('\n') # intro
+# for row in data_split:
+    # print(row.split(','))
 
-
-
-
-print(r.status)
+# Abrir ficheros XLS y XLSX
+file_name1 = 'titanic/titanic3.xls' # o titanic3.xlsx
+titanic2 = pd.read_excel(main_path + '/' + file_name1, "titanic3") # el segundo argumento es la hoja del excel
+# convierte en distintos formatos
+titanic2.to_csv(main_path + '/titanic/titanic_custom.csv')
+titanic2.to_excel(main_path + '/titanic/titanic_custom.xls')
+titanic2.to_json(main_path + '/titanic/titanic_custom.json')
