@@ -55,6 +55,11 @@ pip3 install ipython
 ```
 pip3 install scikit-learn
 ```
+- [urllib3](https://pypi.org/project/urllib3/)
+```
+pip3 install urllib3
+```
+
 ## Introducción
 ### Proceso
 1. Buscar el objetivo, lo que queremos estimar o predecir.
@@ -90,3 +95,5 @@ Tipos de ecuaciones:
 
 Andrew Lang dijo:
 > Él usa la estadística como un borracho utiliza las farolas: para el apoyo en lugar de para la iluminación.
+## Limpieza de datos
+Utilizaremos el paquete pandas para la limpieza de datos. Los datos se organizan en un **dataset** (un fichero), cuando este fichero se carga dentro de un programa pasa a ser un **dataframe**.
