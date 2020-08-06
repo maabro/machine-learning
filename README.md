@@ -104,3 +104,14 @@ Andrew Lang dijo:
 > Él usa la estadística como un borracho utiliza las farolas: para el apoyo en lugar de para la iluminación.
 ## Limpieza de datos
 Utilizaremos el paquete pandas para la limpieza de datos. Los datos se organizan en un **dataset** (un fichero), cuando este fichero se carga dentro de un programa pasa a ser un **dataframe**.
+### Valores que faltan
+Los valores que faltan en un **dataset** pueden venir por dos razones:
+- Extracción de los datos: cuando se extraen los datos de una BD por ejemplo, puede contener errores que generen un NaN. La solución optimizando el sistema de extracción.
+- Recolección de los datos: cuando se obtienen los datos, algunos de ellos no existen.
+
+No se pueden hacer operaciones sobre valores que falten. Hay varios métodos para solucionar el problema de los valores que faltan en el **dataset**:
+- Borrar directamente los valores que faltan, solución agresiva.
+- Substituir los valores faltantes:
+  - Remplazar todos los NaN por el mismo valor.
+  - Remplazar por columnas y añadir el valor más indicado.
+  - Remplazar todos por un valor estadístico (mediana, ...)
