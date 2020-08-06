@@ -1,3 +1,4 @@
+# Carga de los datos
 import pandas as pd # https://pandas.pydata.org/docs/
 import os # https://docs.python.org/3/library/os.html
 import csv # https://docs.python.org/3/library/csv.html
@@ -22,7 +23,6 @@ data2 = pd.read_csv(main_path + '/customer-churn-model/Customer Churn Model.txt'
 # https://docs.python.org/3/library/functions.html#open
 data3 = open(main_path + '/customer-churn-model/Customer Churn Model.txt', 'r')
 cols = data3.readline().strip().split(',')
-n_cols = len(cols) # numero de columnas
 counter = 0
 main_dict = {}
 for col in cols:
@@ -30,13 +30,13 @@ for col in cols:
 
 for line in data3:
     values = line.strip().split(',')
-    for i in range(n_cols):
-        main_dict[cols[i]].append(values[i])
+    for i in range(len(cols)):
+        main_dict[cols[i]].append(values[i]) # cada valor a su respectiva columna
     counter += 1
-print("El data set tiene %d filas y %d columnas"%(counter,n_cols))
+print("El data set tiene %d filas"%(counter))
 
 # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html
-df3 = pd.DataFrame(main_dict)
+df3 = pd.DataFrame(main_dict) # convertimos el diccionario en un dataframe
 # print(df3.head())
 
 # Leer y escribir ficheros
@@ -61,6 +61,26 @@ data_map = "".join(map(chr, r.data)) # map convierte a char cada elemento del ar
 data_split = data_map.split('\n') # intro
 # for row in data_split:
     # print(row.split(','))
+
+str_data = r.data.decode('utf-8') # el string binario lo decodificamos a utf
+lines = str_data.split('\n') # sacamos las filas
+col_names = lines[0].split(',')
+n_cols = len(col_names) # guardamos la cabecera, la primera linea
+cnt = 0
+main_dict = {} # crear el diccionario
+for col in lines[0].split(','):
+    main_dict[col] = []
+for line in lines:
+    if(counter > 0): # salta la cabecera que esta en n_cols
+        values = line.strip().split(',') # separamos por comas
+        for i in range(n_cols):
+            main_dict[col_names[i]].append(values[i])
+    cnt += 1
+
+medals_df = pd.DataFrame(main_dict)
+medals_df.to_csv(main_path + '/athletes/downloaded_medals.csv')
+medals_df.to_excel(main_path + '/athletes/downloaded_medals.xls')
+medals_df.to_json(main_path + '/athletes/downloaded_medals.json')
 
 # Abrir ficheros XLS y XLSX
 file_name1 = 'titanic/titanic3.xls' # o titanic3.xlsx
