@@ -115,3 +115,8 @@ No se pueden hacer operaciones sobre valores que falten. Hay varios métodos par
   - Remplazar todos los NaN por el mismo valor.
   - Remplazar por columnas y añadir el valor más indicado.
   - Remplazar todos por un valor estadístico (mediana, ...)
+
+## Manejo de datos
+### Data Wrangling
+Proceso de transformar y mapear los datos de un dataset.
+- [Cheat sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
